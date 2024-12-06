@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../public/css/styles.css">
+  <link rel="stylesheet" href="../../web/public/css/styles.css">
   <title>Create an Account</title>
 </head>
 <body>
   <div class="signup-container">
     <div class="image-section">
-      <img src="../assets/images/seedling.jpg" alt="Falacta Seedling" 
+      <img src="../../web/assets/images/seedling.jpg" alt="Falacta Seedling" 
            loading="lazy" 
            width="600" 
            height="400" 
-           srcset="../assets/images/seedling.jpg 600w, ../assets/images/seedling.jpg 1200w" 
+           srcset="../../web/assets/images/seedling.jpg 600w, ../../web/assets/images/seedling.jpg 1200w" 
            sizes="(max-width: 600px) 100vw, 50vw" />
     </div>
     <div class="form-section">
       <h1>Create an account</h1>
-      <p>Already have an account? <a href="login.html">Log in</a></p>
+      <p>Already have an account? <a href="../index.html">Log in</a></p>
       <form id="signupForm">
         <div class="name-fields">
           <input type="text" id="firstName" placeholder="First name" required />
@@ -37,7 +37,7 @@
           </label>
         </div>
         <button type="submit" class="create-account-btn">Create Account</button>
-        
+        <p><a href="../index.html">Log in instead</a></p>
       </form>
     </div>
   </div>
@@ -81,7 +81,7 @@
         // Handle response
         if (response.ok) {
           alert("Account created successfully!");
-          window.location.href = "login.html";
+          window.location.href = "../index.html";
         } else {
           alert(result.message || "Failed to create account.");
         }

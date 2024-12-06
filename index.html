@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../public/css/styles.css">
+  <link rel="stylesheet" href="./public/css/styles.css">
   <title>Log in to your account</title>
 </head>
 <body>
   <div class="login-container">
     <div class="image-section">
       <!-- Optimized Image with Lazy Loading and Responsive Design -->
-      <img src="../assets/images/seedling.jpg" 
+      <img src="./assets/images/seedling.jpg" 
            alt="Nature" 
            loading="lazy" 
            width="600" 
            height="400" 
-           srcset="../assets/images/seedling.jpg 600w, ../assets/images/seedling.jpg 1200w" 
+           srcset="./assets/images/seedling.jpg 600w, ./assets/images/seedling.jpg 1200w" 
            sizes="(max-width: 600px) 100vw, 50vw" />
     </div>
     <div class="form-section">
       <h1>Log in to your account</h1>
-      <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+      <p>Don't have an account? <a href="./views/signup.html">Sign up</a></p>
       <form id="loginForm">
         <input type="email" id="email" placeholder="Email address" required />
         <input type="password" id="password" placeholder="Password" required />
@@ -74,7 +74,7 @@
           localStorage.setItem("authToken", result.token);
 
           // Redirect to the dashboard page
-          window.location.href = "dashboard.html"; // Replace with your dashboard URL
+          window.location.href = "./views/dashboard.html"; // Replace with your dashboard URL
         } else {
           alert(result.message || "Login failed. Please try again.");
         }

@@ -1,55 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../public/css/dsstyles.css">
-  <title>Admin Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../public/css/dsstyles.css">
 </head>
 <body>
-  <div class="dashboard-container">
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <h2>Admin Dashboard</h2>
+    <div class="sidebar">
+        <h2>TREENSE</h2>
+        <a href="dashboard.html">Overview</a>
+        <a href="history.html">History</a>
+        <a href="analytics.html">Analytics & Reports</a>
+        <!-- <a href="performance-monitoring.html">Performance Monitoring</a> -->
+        <a href="settings.html">Settings</a>
+        <!-- <a href="user-feedback.html">User Feedback</a>
+        <a href="notifications-alerts.html">Notifications & Alerts</a>
+        <a href="classification-model.html">Seedling Classification Model</a> -->
       </div>
-      <nav>
-        <ul>
-          <li><a href="overview.html" class="tab-link">Overview</a></li>
-          <li><a href="report-history.html" class="tab-link">Report History</a></li>
-          <li><a href="analytics.html" class="tab-link">Analytics</a></li>
-          <li><a href="settings.html" class="tab-link">Settings</a></li>
-        </ul>
-      </nav>
-    </aside>
-    <main class="main-content">
-      <div id="tab-content">
-        <!-- Loaded tab content will appear here -->
-      </div>
-    </main>
-  </div>
-
-  <script>
-    // Dynamic tab loading
-    document.querySelectorAll('.tab-link').forEach(link => {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        const tabUrl = this.getAttribute('href');
-
-        // Load the content of the clicked tab
-        fetch(tabUrl)
-          .then(response => response.text())
-          .then(html => {
-            document.getElementById('tab-content').innerHTML = html;
-          })
-          .catch(error => {
-            console.error('Error loading tab:', error);
-            document.getElementById('tab-content').innerHTML = '<p>Error loading tab. Please try again.</p>';
-          });
-      });
-    });
-
-    // Automatically load the first tab on page load
-    document.querySelector('.tab-link').click();
-  </script>
+    <div class="content">
+        <div id="overview" class="section active">
+            <h2>Overview</h2>
+            <p>This is the overview section, providing a summary of the app's usage and key metrics.</p>
+            <div class="stats">
+                <div class="stat">
+                    <h3>Total Seedlings Classified</h3>
+                    <p id="total-seedlings">Loading...</p>
+                </div>
+                <div class="stat">
+                    <h3>Healthy Seedlings</h3>
+                    <p id="healthy-seedlings">Loading...</p>
+                </div>
+                <div class="stat">
+                    <h3>Unhealthy Seedlings</h3>
+                    <p id="unhealthy-seedlings">Loading...</p>
+                </div>
+                <div class="stat">
+                    <h3>Recent Activity</h3>
+                    <p>Latest classifications and trends over time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../public/js/dash.js"></script>
 </body>
 </html>

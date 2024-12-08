@@ -1,34 +1,37 @@
-<h3>Analytics</h3>
-<div class="analytics-chart">
-  <canvas id="reportChart"></canvas>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-  // Fetch and display analytics data
-  fetch('/api/analytics')
-    .then(response => response.json())
-    .then(data => {
-      const ctx = document.getElementById('reportChart').getContext('2d');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: data.labels,
-          datasets: [{
-            label: 'Reports Generated',
-            data: data.data,
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 2,
-            fill: false
-          }]
-        },
-        options: {
-          responsive: true,
-          scales: {
-            x: { beginAtZero: true }
-          }
-        }
-      });
-    })
-    .catch(error => console.error('Error fetching analytics data:', error));
-</script>
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics & Reports</title>
+    <link rel="stylesheet" href="../public/css/dsstyles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.12/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>TREENSE</h2>
+        <a href="dashboard.html">Overview</a>
+        <a href="history.html">History</a>
+        <a href="analytics.html">Analytics & Reports</a>
+        <!-- <a href="performance-monitoring.html">Performance Monitoring</a> -->
+        <a href="settings.html">Settings</a>
+        <!-- <a href="user-feedback.html">User Feedback</a>
+        <a href="notifications-alerts.html">Notifications & Alerts</a>
+        <a href="classification-model.html">Seedling Classification Model</a> -->
+    </div>
+    <div class="content">
+        <div id="analytics-reports" class="section active">
+            <h2>Analytics & Reports</h2>
+            <div class="chart-container">
+                <canvas id="healthChart"></canvas>
+            </div>
+            <button id="exportCsv">Export CSV</button>
+            <button id="exportPdf">Export PDF</button>
+        </div>
+    </div>
+    <script src="../public/js/analytics.js"></script>
+</body>
+</html>

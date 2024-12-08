@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+    <link rel="stylesheet" href="../public/css/dsstyles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>TREENSE</h2>
+        <a href="dashboard.html">Overview</a>
+        <a href="history.html">History</a>
+        <a href="analytics.html">Analytics & Reports</a>
+        <!-- <a href="performance-monitoring.html">Performance Monitoring</a> -->
+        <a href="settings.html">Settings</a>
+        <!-- <a href="user-feedback.html">User Feedback</a>
+        <a href="notifications-alerts.html">Notifications & Alerts</a>
+        <a href="classification-model.html">Seedling Classification Model</a> -->
+      </div>
+    <div class="content">
+        <div id="history" class="section active">
+            <h2>Seedling Classification History</h2>
+            <div class="filters">
+                <label for="filter-date">Filter by Date:</label>
+                <input type="date" id="filter-date">
+                <label for="filter-status">Filter by Status:</label>
+                <select id="filter-status">
+                    <option value="all">All</option>
+                    <option value="healthy">Healthy</option>
+                    <option value="unhealthy">Unhealthy</option>
+                </select>
+                <label for="sort-options">Sort by:</label>
+                <select id="sort-options">
+                    <option value="date">Date</option>
+                    <option value="status">Status</option>
+                </select>
+                <button onclick="applyFilters()">Apply</button>
+            </div>
+            <div class="history-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Image</th>
+                            <th>Classification</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-table-body">
+                        <!-- Data will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="../public/js/history.js"></script>
+</body>
+</html>

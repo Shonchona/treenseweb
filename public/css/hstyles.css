@@ -1,0 +1,115 @@
+/* General Styles for History Page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+  }
+  
+  .content {
+    flex: 1;
+    background-color: #f4f4f4;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  /* History Section */
+  #history {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Filters Section */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .filters label {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .filters input,
+  .filters select {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .filters button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .filters button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Table Styling */
+  .history-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .history-list th,
+  .history-list td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .history-list th {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+  }
+  
+  .history-list td {
+    font-size: 16px;
+  }
+  
+  .history-list td img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .history-list tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .filters {
+      flex-direction: column;
+    }
+  
+    .filters button {
+      margin-top: 10px;
+    }
+  
+    .history-list table th, .history-list table td {
+      padding: 10px;
+    }
+  }
+  

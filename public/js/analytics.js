@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const healthChartCtx = document.getElementById('healthChart').getContext('2d');
+    const classificationPieChartCtx = document.getElementById('classificationPieChart').getContext('2d'); // Pie chart context
 
     async function fetchData() {
         try {
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function createChart(data) {
+    function createBarChart(data) {
         const labels = [...new Set(data.map(item => new Date(item.created_at).toLocaleDateString()))];
         const healthyData = labels.map(label => data.filter(item => new Date(item.created_at).toLocaleDateString() === label && item.classification === 'Healthy').length);
         const unhealthyData = labels.map(label => data.filter(item => new Date(item.created_at).toLocaleDateString() === label && item.classification === 'Unhealthy').length);
@@ -44,15 +45,73 @@ document.addEventListener('DOMContentLoaded', () => {
                 scales: {
                     y: {
                         beginAtZero: true,
+                        ticks: {
+                            stepSize: 1, // Ensures the interval between ticks is 1
+                            callback: function(value) {
+                                return Number.isInteger(value) ? value : null; // Display only whole numbers
+                            },
+                        },
                     },
                 },
             },
         });
     }
 
+    // Create Pie Chart for classification distribution with percentages
+    function createPieChart(data) {
+        const healthyCount = data.filter(item => item.classification === 'Healthy').length;
+        const unhealthyCount = data.filter(item => item.classification === 'Unhealthy').length;
+        const total = healthyCount + unhealthyCount;
+        const healthyPercentage = ((healthyCount / total) * 100).toFixed(2);
+        const unhealthyPercentage = ((unhealthyCount / total) * 100).toFixed(2);
+
+        const pieData = {
+            labels: ['Healthy', 'Unhealthy'],
+            datasets: [{
+                data: [healthyCount, unhealthyCount],
+                backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(255, 99, 132, 0.6)'],
+                borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
+                borderWidth: 1
+            }]
+        };
+
+        new Chart(classificationPieChartCtx, {
+            type: 'pie',
+            data: pieData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + ' entries (' + (tooltipItem.raw / total * 100).toFixed(2) + '%)';
+                            }
+                        }
+                    },
+                    datalabels: {
+                        display: true,
+                        formatter: (value, context) => {
+                            let percentage = (value / total * 100).toFixed(2);
+                            return `${percentage}%`; // Show percentage in each segment
+                        },
+                        color: 'white',
+                        font: {
+                            weight: 'bold',
+                            size: 14
+                        }
+                    }
+                }
+            }
+        });
+    }
+
     async function init() {
         const data = await fetchData();
-        createChart(data);
+        createBarChart(data);
+        createPieChart(data); // Create the pie chart
     }
 
     function exportCSV() {

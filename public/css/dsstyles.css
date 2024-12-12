@@ -6,42 +6,124 @@ body {
   height: 100vh;
   overflow: hidden;
 }
+
 .sidebar {
-  width: 250px;
+  width: 80px; /* Collapsed width for icon-only mode */
   background-color: #fff;
-  color: #000000;
+  color: #000;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 15px;
+  transition: width 0.3s ease;
 }
+
+.sidebar:hover {
+  width: 250px; /* Expanded width when hovered */
+}
+
 .sidebar a {
-  color: #000000;
+  color: #000;
   text-decoration: none;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-left: 10px;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
 }
+
 .sidebar a:hover {
-  background-color: #4CAF50;
+  background-color: #f0f0f0; /* Subtle hover effect */
 }
+
+.sidebar a .link-text {
+  margin-left: 10px;
+  opacity: 0; /* Hide text initially */
+  transition: opacity 0.3s ease;
+}
+
+.sidebar:hover a .link-text {
+  opacity: 1; /* Show text when sidebar is expanded */
+}
+
+/* Style for logo and text */
+.sidebar .logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align logo and text horizontally */
+  padding-top: 20px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.sidebar .logo-img {
+  padding-left: 20px;
+  width: 40px; /* Set logo size */
+  height: 40px; /* Maintain a square aspect ratio */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar .logo-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  margin-left: 10px; /* Add space between logo and text */
+  opacity: 0; /* Hide text initially */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateX(-20px); /* Slide text to the left */
+}
+
+/* On hover, show logo-text next to logo and apply animation */
+.sidebar:hover .logo-text {
+  opacity: 1; /* Show text */
+  transform: translateX(0); /* Slide text into place */
+}
+
+.sidebar:hover .logo-img {
+  opacity: 1; /* Keep the logo visible */
+  transform: scale(1.1); /* Slight zoom effect for emphasis */
+}
+
+.sidebar a i {
+  font-size: 24px; /* Set the icon size to match the logo */
+  margin-right: 10px;
+  padding-left: 5px;
+}
+
+/* Active link styling */
+.sidebar a.active {
+  border-left: 5px solid #4CAF50; /* Green line on the left */
+  background-color: transparent; /* No background */
+  color: #4CAF50; /* Optional: change text color */
+  font-weight: bold; /* Optional: make the text bold */
+}
+
+.sidebar a.active i {
+  color: #4CAF50; /* Change icon color when active */
+}
+
 .content {
   flex: 1;
   background-color: #f4f4f4;
   padding: 20px;
   overflow-y: auto;
 }
+
 .section {
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
 }
+
 .stats { 
   display: flex; 
   flex-wrap: wrap; 
   gap: 20px; 
 } 
+
 .stat { 
   background-color: #e0e0e0; 
   padding: 20px; 

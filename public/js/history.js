@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${new Date(item.created_at).toLocaleDateString()}</td>
                 <td><img src="${item.image_url}" alt="Seedling Image" width="50"></td>
                 <td>${item.classification}</td>
+                <td>${item.location || 'N/A'}</td> <!-- Display Location, default to 'N/A' if not available -->
             `;
             tableBody.appendChild(row);
         });

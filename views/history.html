@@ -5,19 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History</title>
     <link rel="stylesheet" href="../public/css/dsstyles.css">
+    <link rel="stylesheet" href="../public/css/hstyles.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="sidebar">
-        <h2>TREENSE</h2>
-        <a href="dashboard.html">Overview</a>
-        <a href="history.html">History</a>
-        <a href="analytics.html">Analytics & Reports</a>
-        <!-- <a href="performance-monitoring.html">Performance Monitoring</a> -->
-        <a href="settings.html">Settings</a>
-        <!-- <a href="user-feedback.html">User Feedback</a>
-        <a href="notifications-alerts.html">Notifications & Alerts</a>
-        <a href="classification-model.html">Seedling Classification Model</a> -->
-      </div>
+        <div class="logo" id="logo">
+            <!-- Logo image -->
+            <img src="..//assets/images/logo-no-background.png" alt="TREENSE Logo" class="logo-img">
+            <!-- TREENSE Text -->
+            <h2 class="logo-text">TREENSE</h2>
+        </div>
+        <a href="dashboard.html" id="dashboard-link"><i class="fas fa-tachometer-alt"></i><span class="link-text">Overview</span></a>
+        <a href="history.html" id="history-link"><i class="fas fa-history"></i><span class="link-text">History</span></a>
+        <a href="analytics.html" id="analytics-link"><i class="fas fa-chart-line"></i><span class="link-text">Analytics</span></a>
+        <a href="settings.html" id="settings-link"><i class="fas fa-cogs"></i><span class="link-text">Settings</span></a>
+    </div>
     <div class="content">
         <div id="history" class="section active">
             <h2>Seedling Classification History</h2>
@@ -44,6 +48,7 @@
                             <th>Date</th>
                             <th>Image</th>
                             <th>Classification</th>
+                            <th>Location</th>
                         </tr>
                     </thead>
                     <tbody id="history-table-body">
@@ -54,5 +59,24 @@
         </div>
     </div>
     <script src="../public/js/history.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the current page URL
+            const currentPage = window.location.pathname.split("/").pop();
+    
+            // List of page links
+            const links = {
+                "dashboard.html": "dashboard-link",
+                "history.html": "history-link",
+                "analytics.html": "analytics-link",
+                "settings.html": "settings-link"
+            };
+    
+            // Find the corresponding link and add the 'active' class
+            if (links[currentPage]) {
+                document.getElementById(links[currentPage]).classList.add("active");
+            }
+        });
+    </script>
 </body>
 </html>

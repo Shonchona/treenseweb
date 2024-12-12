@@ -7,31 +7,74 @@
     <link rel="stylesheet" href="../public/css/dsstyles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.12/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>    
+    <link rel="stylesheet" href="../public/css/dsstyles.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .charts-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .chart-container {
+            width: 45%;
+            height: 300px;
+        }
+    </style>
 </head>
+
 <body>
     <div class="sidebar">
-        <h2>TREENSE</h2>
-        <a href="dashboard.html">Overview</a>
-        <a href="history.html">History</a>
-        <a href="analytics.html">Analytics & Reports</a>
-        <!-- <a href="performance-monitoring.html">Performance Monitoring</a> -->
-        <a href="settings.html">Settings</a>
-        <!-- <a href="user-feedback.html">User Feedback</a>
-        <a href="notifications-alerts.html">Notifications & Alerts</a>
-        <a href="classification-model.html">Seedling Classification Model</a> -->
+        <div class="logo" id="logo">
+            <!-- Logo image -->
+            <img src="..//assets/images/logo-no-background.png" alt="TREENSE Logo" class="logo-img">
+            <!-- TREENSE Text -->
+            <h2 class="logo-text">TREENSE</h2>
+        </div>
+        <a href="dashboard.html" id="dashboard-link"><i class="fas fa-tachometer-alt"></i><span class="link-text">Overview</span></a>
+        <a href="history.html" id="history-link"><i class="fas fa-history"></i><span class="link-text">History</span></a>
+        <a href="analytics.html" id="analytics-link"><i class="fas fa-chart-line"></i><span class="link-text">Analytics</span></a>
+        <a href="settings.html" id="settings-link"><i class="fas fa-cogs"></i><span class="link-text">Settings</span></a>
     </div>
     <div class="content">
         <div id="analytics-reports" class="section active">
             <h2>Analytics & Reports</h2>
-            <div class="chart-container">
-                <canvas id="healthChart"></canvas>
+            <div class="charts-container">
+                <!-- Bar chart -->
+                <div class="chart-container">
+                    <canvas id="healthChart"></canvas>
+                </div>
+                <!-- Pie chart -->
+                <div class="chart-container">
+                    <canvas id="classificationPieChart"></canvas>
+                </div>
             </div>
             <button id="exportCsv">Export CSV</button>
             <button id="exportPdf">Export PDF</button>
         </div>
     </div>
     <script src="../public/js/analytics.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the current page URL
+            const currentPage = window.location.pathname.split("/").pop();
+    
+            // List of page links
+            const links = {
+                "dashboard.html": "dashboard-link",
+                "history.html": "history-link",
+                "analytics.html": "analytics-link",
+                "settings.html": "settings-link"
+            };
+    
+            // Find the corresponding link and add the 'active' class
+            if (links[currentPage]) {
+                document.getElementById(links[currentPage]).classList.add("active");
+            }
+        });
+    </script>
 </body>
 </html>

@@ -81,51 +81,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// //fetching classification
-// router.get("/classifications", async (req, res) => {
-//   try {
-//     const { data, error } = await supabase
-//       .from("plant_classifications")
-//       .select("*");
-//     if (error) {
-//       throw error;
-//     }
-//     res.json(data);
-//   } catch (error) {
-//     console.error("Error fetching classifications", error);
-//     res.status(500).send("Error fetching classifications");
-//   }
-// });
-
-// //fetch the summary for overview
-// router.get("/summary", async (req, res) => {
-//   try {
-//     const { data: totalCountData, error: totalCountError } = await supabase
-//       .from("plant_classifications")
-//       .select("*", { count: "exact" });
-//     const { data: healthyCountData, error: healthyCountError } = await supabase
-//       .from("plant_classifications")
-//       .select("*", { count: "exact" })
-//       .eq("classification", "Healthy");
-//     const { data: unhealthyCountData, error: unhealthyCountError } =
-//       await supabase
-//         .from("plant_classifications")
-//         .select("*", { count: "exact" })
-//         .eq("classification", "Unhealthy");
-//     if (totalCountError || healthyCountError || unhealthyCountError) {
-//       throw new Error("Error fetching summary data");
-//     }
-//     const summary = {
-//       total: totalCountData.length,
-//       healthy: healthyCountData.length,
-//       unhealthy: unhealthyCountData.length,
-//     };
-//     res.json(summary);
-//   } catch (error) {
-//     console.error("Error fetching summary", error);
-//     res.status(500).send("Error fetching summary");
-//   }
-// });
 
 router.get("/classifications", async (req, res) => {
   try {
